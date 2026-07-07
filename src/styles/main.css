@@ -1,26 +1,28 @@
 /* ============================================================
    AFRICA AGRO PARTNERS — Expérience 3D immersive
    Design system : Corporate "Agro-Tech"
-   Primary  : vert profond   |  Accent : or
    ============================================================ */
 
+/* Charte graphique Africa Agro Partners :
+   Noir #000000 · Vert profond #003D2E · Olive #6B760D · Vert feuille #92BA59
+   Typographies : Ubuntu (display) · Gilroy (texte, fallback Ubuntu) */
 :root {
-  --green-950: #041b13;
-  --green-900: #06251b;
-  --green-800: #0a3527;
-  --green-700: #0f4a36;
-  --green-500: #1d7a58;
-  --gold-300: #f3d98b;
-  --gold-400: #e9c35e;
-  --gold-500: #d4a72c;
-  --gold-600: #b8860b;
-  --ivory: #f6f2e7;
-  --ivory-dim: rgba(246, 242, 231, 0.72);
-  --glass-bg: rgba(6, 37, 27, 0.42);
-  --glass-border: rgba(233, 195, 94, 0.22);
-  --glass-highlight: rgba(246, 242, 231, 0.08);
-  --font-display: 'Fraunces', 'Georgia', serif;
-  --font-body: 'Sora', 'Segoe UI', system-ui, sans-serif;
+  --black: #000000;
+  --green-950: #001710;
+  --green-900: #00251c;
+  --green-800: #003d2e;
+  --green-700: #0a5c46;
+  --olive-600: #6b760d;
+  --leaf-500: #92ba59;
+  --leaf-400: #92ba59;
+  --leaf-300: #b9d68c;
+  --ivory: #ffffff;
+  --ivory-dim: rgba(255, 255, 255, 0.74);
+  --glass-bg: rgba(0, 61, 46, 0.42);
+  --glass-border: rgba(146, 186, 89, 0.26);
+  --glass-highlight: rgba(255, 255, 255, 0.08);
+  --font-display: 'Ubuntu', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Gilroy', 'Ubuntu', 'Segoe UI', system-ui, sans-serif;
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --header-h: 84px;
 }
@@ -40,7 +42,7 @@ body {
   line-height: 1.6;
 }
 
-::selection { background: var(--gold-500); color: var(--green-950); }
+::selection { background: var(--leaf-500); color: var(--green-950); }
 
 sup { font-size: 0.5em; }
 
@@ -65,8 +67,8 @@ a { color: inherit; }
   z-index: 1;
   pointer-events: none;
   background:
-    radial-gradient(120% 90% at 50% 10%, transparent 40%, rgba(4, 27, 19, 0.62) 100%),
-    linear-gradient(180deg, rgba(4, 27, 19, 0.52) 0%, rgba(4, 27, 19, 0.34) 45%, rgba(4, 27, 19, 0.60) 100%);
+    radial-gradient(120% 90% at 50% 10%, transparent 40%, rgba(0, 23, 16, 0.62) 100%),
+    linear-gradient(180deg, rgba(0, 23, 16, 0.52) 0%, rgba(0, 23, 16, 0.34) 45%, rgba(0, 23, 16, 0.60) 100%);
 }
 
 /* ============================================================
@@ -85,21 +87,52 @@ a { color: inherit; }
 
 .loader.is-done { opacity: 0; visibility: hidden; }
 
-.loader__mark {
-  font-family: var(--font-display);
-  font-size: clamp(3rem, 8vw, 5rem);
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-align: center;
-  color: var(--ivory);
+.loader__brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
 }
 
-.loader__mark span { color: var(--gold-400); }
+/* ============================================================
+   MARQUE (logo charte : feuilles + panneau "Partners")
+   Variante blanche pour fonds sombres.
+   ============================================================ */
+.brand-mark { height: 44px; width: auto; display: block; flex-shrink: 0; }
+.brand-mark--lg { height: clamp(64px, 10vw, 96px); }
+
+.mark-shape { fill: #ffffff; }
+.mark-vein {
+  fill: none;
+  stroke: var(--green-900);
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+.mark-text {
+  fill: var(--green-800);
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.brand-word {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.32rem;
+  line-height: 0.94;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.brand-word sup { font-size: 0.42em; }
+.brand-word--lg { font-size: clamp(2rem, 5vw, 3rem); }
 
 .loader__bar {
   width: min(280px, 60vw);
   height: 2px;
-  background: rgba(246, 242, 231, 0.14);
+  background: rgba(255, 255, 255, 0.14);
   border-radius: 2px;
   overflow: hidden;
 }
@@ -110,7 +143,7 @@ a { color: inherit; }
   width: 100%;
   transform: scaleX(0);
   transform-origin: left;
-  background: linear-gradient(90deg, var(--gold-600), var(--gold-300));
+  background: linear-gradient(90deg, var(--olive-600), var(--leaf-300));
   transition: transform 0.4s var(--ease-out-expo);
 }
 
@@ -132,7 +165,7 @@ a { color: inherit; }
   right: 0;
   height: 3px;
   z-index: 60;
-  background: rgba(246, 242, 231, 0.08);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .progress span {
@@ -141,8 +174,8 @@ a { color: inherit; }
   width: 100%;
   transform: scaleX(0);
   transform-origin: left;
-  background: linear-gradient(90deg, var(--green-500), var(--gold-400));
-  box-shadow: 0 0 12px rgba(233, 195, 94, 0.55);
+  background: linear-gradient(90deg, var(--green-700), var(--leaf-400));
+  box-shadow: 0 0 12px rgba(146, 186, 89, 0.55);
 }
 
 /* ============================================================
@@ -159,39 +192,18 @@ a { color: inherit; }
   align-items: center;
   justify-content: space-between;
   padding: 0 clamp(20px, 4vw, 56px);
-  background: linear-gradient(180deg, rgba(4, 27, 19, 0.72), transparent);
+  background: linear-gradient(180deg, rgba(0, 23, 16, 0.72), transparent);
 }
 
 .header__brand {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 10px;
   text-decoration: none;
 }
 
-.header__logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  white-space: nowrap;
-  width: 46px;
-  height: 46px;
-  border: 1px solid var(--glass-border);
-  border-radius: 12px;
-  background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 1rem;
-  letter-spacing: 0.04em;
-}
-
-.header__logo em { color: var(--gold-400); font-style: normal; }
-
-.header__name { display: flex; flex-direction: column; line-height: 1.25; }
-.header__name strong { font-size: 0.82rem; letter-spacing: 0.14em; }
-.header__name small { font-size: 0.62rem; letter-spacing: 0.1em; color: var(--ivory-dim); }
+.header__brand .brand-mark { height: 40px; }
+.header__brand .brand-word { font-size: 1.16rem; }
 
 .header__nav {
   display: flex;
@@ -209,7 +221,7 @@ a { color: inherit; }
   transition: color 0.35s ease-out;
 }
 
-.header__nav a:hover { color: var(--gold-300); }
+.header__nav a:hover { color: var(--leaf-300); }
 
 .header__cta {
   padding: 9px 18px;
@@ -224,7 +236,7 @@ a { color: inherit; }
 
 .header__cta:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 22px rgba(233, 195, 94, 0.4);
+  box-shadow: 0 0 22px rgba(146, 186, 89, 0.4);
 }
 
 @media (max-width: 860px) {
@@ -252,9 +264,9 @@ a { color: inherit; }
   align-items: center;
   gap: 10px;
   padding: 16px 30px;
-  border: 1px solid rgba(233, 195, 94, 0.55);
+  border: 1px solid rgba(146, 186, 89, 0.55);
   border-radius: 99px;
-  background: linear-gradient(135deg, rgba(212, 167, 44, 0.92), rgba(184, 134, 11, 0.88));
+  background: linear-gradient(135deg, rgba(146, 186, 89, 0.95), rgba(107, 118, 13, 0.92));
   color: var(--green-950);
   font-family: var(--font-body);
   font-size: 0.92rem;
@@ -265,8 +277,8 @@ a { color: inherit; }
   white-space: nowrap;
   cursor: pointer;
   box-shadow:
-    0 0 0 rgba(233, 195, 94, 0),
-    0 10px 30px rgba(4, 27, 19, 0.45);
+    0 0 0 rgba(146, 186, 89, 0),
+    0 10px 30px rgba(0, 23, 16, 0.45);
   /* Effet hover exigé : transition fluide ease-out, scale + lueur */
   transition:
     transform 0.4s ease-out,
@@ -277,9 +289,9 @@ a { color: inherit; }
 .bmpa-button:focus-visible {
   transform: scale(1.12);
   box-shadow:
-    0 0 34px rgba(233, 195, 94, 0.85),
-    0 0 90px rgba(233, 195, 94, 0.35),
-    0 14px 40px rgba(4, 27, 19, 0.5);
+    0 0 34px rgba(146, 186, 89, 0.85),
+    0 0 90px rgba(146, 186, 89, 0.35),
+    0 14px 40px rgba(0, 23, 16, 0.5);
 }
 
 .bmpa-button svg { transition: transform 0.4s ease-out; }
@@ -289,7 +301,7 @@ a { color: inherit; }
   position: absolute;
   inset: -7px;
   border-radius: inherit;
-  border: 1px solid rgba(233, 195, 94, 0.5);
+  border: 1px solid rgba(146, 186, 89, 0.5);
   animation: pulse 2.4s ease-out infinite;
   pointer-events: none;
 }
@@ -328,17 +340,17 @@ a { color: inherit; }
   font-weight: 600;
   letter-spacing: 0.42em;
   text-transform: uppercase;
-  color: var(--gold-300);
+  color: var(--leaf-300);
 }
 
 .section__title {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 4.6vw, 3.6rem);
-  font-weight: 600;
+  font-size: clamp(2rem, 4.4vw, 3.4rem);
+  font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.01em;
   max-width: 20ch;
-  text-shadow: 0 2px 26px rgba(4, 27, 19, 0.6);
+  text-shadow: 0 2px 26px rgba(0, 23, 16, 0.6);
 }
 
 .section__lead,
@@ -351,8 +363,8 @@ a { color: inherit; }
 
 .hero__lead strong, .hero__lead em { color: var(--ivory); }
 
-.u-gold {
-  background: linear-gradient(120deg, var(--gold-300), var(--gold-500));
+.u-accent {
+  background: linear-gradient(120deg, var(--leaf-300), var(--leaf-500));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -361,12 +373,12 @@ a { color: inherit; }
 /* --- Hero --- */
 .hero__title {
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 6.4vw, 5.2rem);
-  font-weight: 600;
+  font-size: clamp(2.4rem, 6vw, 4.8rem);
+  font-weight: 700;
   line-height: 1.06;
   letter-spacing: -0.015em;
   max-width: 18ch;
-  text-shadow: 0 2px 26px rgba(4, 27, 19, 0.6);
+  text-shadow: 0 2px 26px rgba(0, 23, 16, 0.6);
 }
 
 /* Mots du titre : révélés un à un par masque (effet "Awwwards") */
@@ -403,15 +415,15 @@ a { color: inherit; }
   transition: transform 0.4s ease-out, box-shadow 0.4s ease-out, background 0.4s ease-out;
 }
 
-.btn--gold {
-  background: linear-gradient(135deg, var(--gold-400), var(--gold-600));
+.btn--leaf {
+  background: linear-gradient(135deg, var(--leaf-400), var(--olive-600));
   color: var(--green-950);
-  box-shadow: 0 8px 26px rgba(4, 27, 19, 0.4);
+  box-shadow: 0 8px 26px rgba(0, 23, 16, 0.4);
 }
 
-.btn--gold:hover {
+.btn--leaf:hover {
   transform: scale(1.06);
-  box-shadow: 0 0 30px rgba(233, 195, 94, 0.65), 0 10px 30px rgba(4, 27, 19, 0.45);
+  box-shadow: 0 0 30px rgba(146, 186, 89, 0.65), 0 10px 30px rgba(0, 23, 16, 0.45);
 }
 
 .btn--ghost {
@@ -424,7 +436,7 @@ a { color: inherit; }
 
 .btn--ghost:hover {
   transform: scale(1.06);
-  box-shadow: 0 0 26px rgba(233, 195, 94, 0.35);
+  box-shadow: 0 0 26px rgba(146, 186, 89, 0.35);
 }
 
 .scroll-cue {
@@ -442,7 +454,7 @@ a { color: inherit; }
 .scroll-cue__mouse {
   width: 26px;
   height: 42px;
-  border: 1.5px solid rgba(246, 242, 231, 0.45);
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
   border-radius: 16px;
   display: flex;
   justify-content: center;
@@ -453,7 +465,7 @@ a { color: inherit; }
   width: 3px;
   height: 8px;
   border-radius: 3px;
-  background: var(--gold-300);
+  background: var(--leaf-300);
   animation: wheel 1.8s ease-in-out infinite;
 }
 
@@ -474,7 +486,7 @@ a { color: inherit; }
   background: var(--glass-bg);
   backdrop-filter: blur(18px) saturate(1.25);
   -webkit-backdrop-filter: blur(18px) saturate(1.25);
-  box-shadow: inset 0 1px 0 var(--glass-highlight), 0 24px 60px rgba(4, 27, 19, 0.35);
+  box-shadow: inset 0 1px 0 var(--glass-highlight), 0 24px 60px rgba(0, 23, 16, 0.35);
 }
 
 .glass h3 {
@@ -482,7 +494,7 @@ a { color: inherit; }
   font-size: 1.28rem;
   font-weight: 600;
   margin-bottom: 10px;
-  color: var(--gold-300);
+  color: var(--leaf-300);
 }
 
 .glass p { color: var(--ivory-dim); font-size: 0.96rem; font-weight: 300; }
@@ -498,8 +510,8 @@ a { color: inherit; }
 
 .card:hover {
   transform: translateY(-8px);
-  border-color: rgba(233, 195, 94, 0.5);
-  box-shadow: inset 0 1px 0 var(--glass-highlight), 0 30px 70px rgba(4, 27, 19, 0.5), 0 0 40px rgba(233, 195, 94, 0.12);
+  border-color: rgba(146, 186, 89, 0.5);
+  box-shadow: inset 0 1px 0 var(--glass-highlight), 0 30px 70px rgba(0, 23, 16, 0.5), 0 0 40px rgba(146, 186, 89, 0.12);
 }
 
 .card__icon {
@@ -509,9 +521,9 @@ a { color: inherit; }
   display: grid;
   place-content: center;
   border-radius: 16px;
-  color: var(--gold-400);
+  color: var(--leaf-400);
   border: 1px solid var(--glass-border);
-  background: rgba(233, 195, 94, 0.08);
+  background: rgba(146, 186, 89, 0.08);
 }
 
 .card__icon svg { width: 34px; height: 34px; }
@@ -534,7 +546,7 @@ a { color: inherit; }
   font-size: 0.78rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--gold-300);
+  color: var(--leaf-300);
 }
 
 /* --- Étapes chaîne de valeur --- */
@@ -553,7 +565,7 @@ a { color: inherit; }
   font-weight: 300;
   line-height: 1;
   margin-bottom: 14px;
-  background: linear-gradient(180deg, var(--gold-300), rgba(233, 195, 94, 0.25));
+  background: linear-gradient(180deg, var(--leaf-300), rgba(146, 186, 89, 0.25));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -561,7 +573,7 @@ a { color: inherit; }
 
 /* --- Services --- */
 .service h3 { font-size: 1.08rem; }
-.service--accent { border-color: rgba(233, 195, 94, 0.45); background: rgba(15, 74, 54, 0.5); }
+.service--accent { border-color: rgba(146, 186, 89, 0.45); background: rgba(10, 92, 70, 0.5); }
 
 /* --- BMPA --- */
 .bmpa-list ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
@@ -580,7 +592,7 @@ a { color: inherit; }
   left: 0;
   top: 1px;
   font-size: 0.68rem;
-  color: var(--gold-400);
+  color: var(--leaf-400);
 }
 
 .bmpa-hint {
@@ -591,7 +603,7 @@ a { color: inherit; }
   color: var(--ivory-dim);
 }
 
-.bmpa-hint__icon { color: var(--gold-400); animation: pulse-soft 2.4s ease-in-out infinite; }
+.bmpa-hint__icon { color: var(--leaf-400); animation: pulse-soft 2.4s ease-in-out infinite; }
 
 @keyframes pulse-soft {
   0%, 100% { opacity: 0.5; }
@@ -611,10 +623,10 @@ a { color: inherit; }
 
 .contact h3 { margin-bottom: 6px; }
 .contact a { text-decoration: none; transition: color 0.3s ease-out; }
-.contact a:hover { color: var(--gold-300); }
+.contact a:hover { color: var(--leaf-300); }
 
 .footer { padding-top: 4vh; }
-.footer p { font-size: 0.74rem; letter-spacing: 0.08em; color: rgba(246, 242, 231, 0.45); }
+.footer p { font-size: 0.74rem; letter-spacing: 0.08em; color: rgba(255, 255, 255, 0.45); }
 
 /* ============================================================
    ANIMATIONS D'APPARITION AU SCROLL

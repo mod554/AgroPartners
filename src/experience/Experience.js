@@ -12,11 +12,11 @@ export class Experience {
   /**
    * @param {Object} options
    * @param {HTMLCanvasElement} options.canvas
-   * @param {string} options.videoUrl
+   * @param {{src: string, type: string}[]} options.videoSources
    * @param {HTMLElement} options.anchorElement  Wrapper du bouton BMPA
    * @param {import('../ui/ScrollManager.js').ScrollManager} options.scroll
    */
-  constructor({ canvas, videoUrl, anchorElement, scroll }) {
+  constructor({ canvas, videoSources, anchorElement, scroll }) {
     this.canvas = canvas;
     this.scroll = scroll;
 
@@ -39,7 +39,7 @@ export class Experience {
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     this.renderer.outputColorSpace = THREE.SRGBColorSpace;
 
-    this.videoBackground = new VideoBackground(this.scene, videoUrl);
+    this.videoBackground = new VideoBackground(this.scene, videoSources);
     // La vidéo source est lumineuse : on l'atténue côté WebGL pour
     // garantir la lisibilité du contenu superposé (voir aussi .scene-veil).
     this.scene.backgroundIntensity = 0.7;
@@ -92,13 +92,16 @@ export class Experience {
     // 1. Progression de scroll lissée → paramètre t de la courbe.
     this.scroll.update(dt);
 
-    // 2. Caméra sur sa trajectoire CatmullRom.
+    // 2. La vidéo d'arrière-plan avance avec le scroll (scrubbing).
+    this.videoBackground.scrub(this.scroll.smooth);
+
+    // 3. Caméra sur sa trajectoire CatmullRom.
     this.cameraRig.update(this.scroll.smooth, elapsed);
 
-    // 3. Vie du monde (particules, jalons, portail).
+    // 4. Vie du monde (particules, jalons, portail).
     this.world.update(elapsed);
 
-    // 4. Verrouillage du bouton HTML sur le point 3D du portail.
+    // 5. Verrouillage du bouton HTML sur le point 3D du portail.
     this.uiAnchor.update(this.camera);
 
     this.renderer.render(this.scene, this.camera);

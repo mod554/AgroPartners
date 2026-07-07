@@ -3,7 +3,8 @@ import { Experience } from './experience/Experience.js';
 import { ScrollManager } from './ui/ScrollManager.js';
 import { initReveals, splitHeroTitle } from './ui/Reveal.js';
 
-import videoUrl from './assets/agro-bg.mp4';
+import videoMp4 from './assets/agro-bg-scrub.mp4';
+import videoWebm from './assets/agro-bg-scrub.webm';
 
 // --- Préparation de l'UI -------------------------------------------------
 splitHeroTitle('#hero-title');
@@ -16,7 +17,10 @@ const scroll = new ScrollManager({
 
 const experience = new Experience({
   canvas: document.getElementById('webgl'),
-  videoUrl,
+  videoSources: [
+    { src: videoMp4, type: 'video/mp4; codecs="avc1.64001F"' },
+    { src: videoWebm, type: 'video/webm; codecs="vp9"' }
+  ],
   anchorElement: document.getElementById('bmpa-anchor'),
   scroll
 });
