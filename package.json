@@ -1,0 +1,18 @@
+{
+  "name": "africa-agro-partners",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Expérience web 3D immersive — Africa Agro Partners, filiale du groupe Archetyp Africa",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "three": "^0.166.1"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0"
+  }
+}
