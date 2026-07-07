@@ -20,7 +20,7 @@ npm run preview  # prévisualisation du build
 | Brique | Rôle |
 |---|---|
 | `src/experience/Experience.js` | Orchestrateur WebGL : renderer, scène, boucle de rendu, resize |
-| `src/experience/VideoBackground.js` | Vidéo en `THREE.VideoTexture` sur `scene.background`, cadrage *cover* |
+| `src/experience/VideoBackground.js` | Vidéo en `THREE.VideoTexture`, **pilotée par le scroll** (scrubbing), cadrage *cover* |
 | `src/experience/CameraRig.js` | Caméra guidée au scroll via `THREE.CatmullRomCurve3` + `curve.getPoint(t)` |
 | `src/experience/World.js` | Contenu 3D : particules dorées, jalons géométriques, portail BMPA-CI |
 | `src/experience/UIAnchor.js` | UI-Locking : projection 3D → 2D du bouton « Accéder à la BMPA-CI » |
@@ -49,7 +49,19 @@ avec une transition `ease-out`, sans conflit avec le positionnement JS.
 - Particules en un seul `BufferGeometry` / draw call
 - `prefers-reduced-motion` respecté
 
-## Design
+### Vidéo pilotée par le scroll
 
-Corporate « Agro-Tech » : vert profond (primaire) & or (accent), glassmorphism,
-typographies Fraunces (display) / Sora (texte), animations d'apparition en cascade.
+La vidéo n'est jamais lue en autoplay : sa tête de lecture est asservie à la
+progression du scroll (`video.currentTime = t × durée`). Pour un scrubbing
+fluide dans les deux sens, les fichiers `src/assets/agro-bg-scrub.{mp4,webm}`
+sont encodés avec une image-clé toutes les 6 frames, et la source compatible
+(choisie via `canPlayType`) est préchargée en Blob — chaque seek est instantané.
+
+## Design — Charte graphique officielle
+
+- **Couleurs** : Noir `#000000` · Vert profond `#003D2E` (primaire) ·
+  Olive `#6B760D` · Vert feuille `#92BA59` (accent)
+- **Typographies** : Ubuntu (display) · Gilroy (texte, fallback Ubuntu)
+- **Logo** : marque « feuilles + panneau Partners » reproduite en SVG
+  (variante blanche pour fonds sombres), lockup FRICA/GRO®
+- Glassmorphism, animations d'apparition en cascade

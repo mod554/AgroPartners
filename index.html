@@ -4,14 +4,26 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Africa Agro Partners — Votre partenaire stratégique pour la valorisation et le négoce agricole en Côte d'Ivoire. Filiale du groupe Archetyp Africa." />
-  <meta name="theme-color" content="#06251b" />
+  <meta name="theme-color" content="#003d2e" />
   <title>Africa Agro Partners — Bâtir aujourd'hui, semer l'avenir</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌾</text></svg>" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet" />
 </head>
 <body>
+
+  <!-- Marque Africa Agro Partners (charte graphique) : deux feuilles +
+       panneau "Partners" — variante blanche pour fonds sombres. -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="aap-mark" viewBox="0 0 112 140">
+      <path class="mark-shape" d="M50 2 C16 8 0 32 0 62 L0 90 C36 84 50 58 50 26 Z" />
+      <path class="mark-shape" d="M48 98 C26 92 8 100 0 120 C10 138 34 141 48 128 Z" />
+      <path class="mark-vein" d="M45 102 C32 112 16 124 5 131" />
+      <path class="mark-shape" d="M58 0 L82 0 C98 0 112 14 112 30 L112 110 C112 126 98 140 82 140 L58 140 Z" />
+      <text class="mark-text" transform="translate(88 70) rotate(-90)" text-anchor="middle">Partners</text>
+    </symbol>
+  </svg>
 
   <!-- ==================== SCÈNE WEBGL ==================== -->
   <canvas id="webgl" aria-hidden="true"></canvas>
@@ -19,7 +31,10 @@
 
   <!-- ==================== ÉCRAN DE CHARGEMENT ==================== -->
   <div id="loader" class="loader">
-    <div class="loader__mark">A<span>A</span>P</div>
+    <div class="loader__brand" aria-hidden="true">
+      <svg class="brand-mark brand-mark--lg" viewBox="0 0 112 140"><use href="#aap-mark" /></svg>
+      <span class="brand-word brand-word--lg">FRICA<br />GRO<sup>®</sup></span>
+    </div>
     <div class="loader__bar"><span></span></div>
     <p class="loader__hint">Semer l'avenir…</p>
   </div>
@@ -30,11 +45,8 @@
   <!-- ==================== HEADER ==================== -->
   <header class="header">
     <a class="header__brand" href="#hero" aria-label="Africa Agro Partners — retour à l'accueil">
-      <span class="header__logo">A<em>A</em>P</span>
-      <span class="header__name">
-        <strong>AFRICA AGRO PARTNERS<sup>®</sup></strong>
-        <small>Filiale du groupe ARCHETYP AFRICA<sup>®</sup></small>
-      </span>
+      <svg class="brand-mark" viewBox="0 0 112 140" aria-hidden="true"><use href="#aap-mark" /></svg>
+      <span class="brand-word" aria-hidden="true">FRICA<br />GRO<sup>®</sup></span>
     </a>
     <nav class="header__nav" aria-label="Navigation principale">
       <a href="#apropos">Qui sommes-nous</a>
@@ -71,7 +83,7 @@
           des matières premières.
         </p>
         <div class="hero__actions reveal" style="--d:3">
-          <a class="btn btn--gold" href="#apropos">Découvrir l'expérience</a>
+          <a class="btn btn--leaf" href="#apropos">Découvrir l'expérience</a>
           <a class="btn btn--ghost" href="#bmpa">La bourse BMPA-CI</a>
         </div>
       </div>
@@ -85,7 +97,7 @@
     <section id="apropos" class="section" data-section>
       <div class="section__inner">
         <p class="section__kicker reveal" style="--d:0">La genèse — d'où venons-nous ?</p>
-        <h2 class="section__title reveal" style="--d:1">Construire l'Afrique de demain, <span class="u-gold">aujourd'hui</span>.</h2>
+        <h2 class="section__title reveal" style="--d:1">Construire l'Afrique de demain, <span class="u-accent">aujourd'hui</span>.</h2>
         <div class="grid grid--2">
           <article class="glass reveal" style="--d:2">
             <h3>Un ancrage panafricain</h3>
@@ -119,7 +131,7 @@
     <section id="expertise" class="section" data-section>
       <div class="section__inner">
         <p class="section__kicker reveal" style="--d:0">Nos domaines d'expertise</p>
-        <h2 class="section__title reveal" style="--d:1">Trois filières <span class="u-gold">stratégiques</span></h2>
+        <h2 class="section__title reveal" style="--d:1">Trois filières <span class="u-accent">stratégiques</span></h2>
         <p class="section__lead reveal" style="--d:2">
           Notre activité se concentre sur trois filières choisies pour leur fort potentiel
           de croissance et leur importance économique.
@@ -164,7 +176,7 @@
     <section id="chaine" class="section" data-section>
       <div class="section__inner">
         <p class="section__kicker reveal" style="--d:0">Ce qui nous différencie</p>
-        <h2 class="section__title reveal" style="--d:1">Une chaîne de valeur <span class="u-gold">intégrée</span></h2>
+        <h2 class="section__title reveal" style="--d:1">Une chaîne de valeur <span class="u-accent">intégrée</span></h2>
         <p class="section__lead reveal" style="--d:2">
           Une suite de services complète qui sécurise l'ensemble de la transaction pour nos partenaires.
         </p>
@@ -192,7 +204,7 @@
     <section id="services" class="section" data-section>
       <div class="section__inner">
         <p class="section__kicker reveal" style="--d:0">Nos services</p>
-        <h2 class="section__title reveal" style="--d:1">Marché agricole <span class="u-gold">&amp;</span> hors-marché</h2>
+        <h2 class="section__title reveal" style="--d:1">Marché agricole <span class="u-accent">&amp;</span> hors-marché</h2>
         <div class="grid grid--3">
           <article class="glass service reveal" style="--d:2">
             <h3>Intermédiation en opérations de bourse agricole</h3>
@@ -226,7 +238,7 @@
     <section id="bmpa" class="section section--bmpa" data-section>
       <div class="section__inner">
         <p class="section__kicker reveal" style="--d:0">Intermédiation boursière</p>
-        <h2 class="section__title reveal" style="--d:1">La <span class="u-gold">BMPA-CI</span>, le marché agricole structuré</h2>
+        <h2 class="section__title reveal" style="--d:1">La <span class="u-accent">BMPA-CI</span>, le marché agricole structuré</h2>
         <div class="grid grid--2">
           <article class="glass reveal" style="--d:2">
             <h3>Un marché financier régulé</h3>
@@ -280,14 +292,14 @@
     <section id="contact" class="section section--contact" data-section>
       <div class="section__inner">
         <p class="section__kicker reveal" style="--d:0">Merci</p>
-        <h2 class="section__title reveal" style="--d:1">Ensemble, construisons la prochaine étape de votre <span class="u-gold">croissance</span>.</h2>
+        <h2 class="section__title reveal" style="--d:1">Ensemble, construisons la prochaine étape de votre <span class="u-accent">croissance</span>.</h2>
         <div class="contact glass reveal" style="--d:2">
           <div>
             <h3>AFRICA AGRO PARTNERS<sup>®</sup></h3>
             <p>08 BPM 1600 Abidjan 08 — Côte d'Ivoire</p>
             <p><a href="tel:+2252721342735">(+225) 27 21 34 27 35</a></p>
           </div>
-          <a class="btn btn--gold" href="tel:+2252721342735">Parler à un expert</a>
+          <a class="btn btn--leaf" href="tel:+2252721342735">Parler à un expert</a>
         </div>
         <footer class="footer reveal" style="--d:3">
           <p>© 2025 AFRICA AGRO PARTNERS<sup>®</sup> — Filiale du groupe ARCHETYP AFRICA<sup>®</sup>. Tous droits réservés.</p>

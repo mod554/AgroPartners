@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 
-const GOLD = 0xe9c35e;
-const GREEN = 0x1d7a58;
+const LEAF = 0x92ba59;
+const DEEP = 0x0a5c46;
 
 /** Sprite circulaire doux généré en canvas (pour les particules). */
 function makeGlowSprite() {
@@ -10,9 +10,9 @@ function makeGlowSprite() {
   canvas.width = canvas.height = size;
   const ctx = canvas.getContext('2d');
   const g = ctx.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size / 2);
-  g.addColorStop(0, 'rgba(255, 244, 214, 1)');
-  g.addColorStop(0.4, 'rgba(233, 195, 94, 0.55)');
-  g.addColorStop(1, 'rgba(233, 195, 94, 0)');
+  g.addColorStop(0, 'rgba(243, 255, 224, 1)');
+  g.addColorStop(0.4, 'rgba(146, 186, 89, 0.55)');
+  g.addColorStop(1, 'rgba(146, 186, 89, 0)');
   ctx.fillStyle = g;
   ctx.fillRect(0, 0, size, size);
   const texture = new THREE.CanvasTexture(canvas);
@@ -45,7 +45,7 @@ export class World {
     this.group.add(sun);
 
     // Lueur dorée émanant du portail BMPA.
-    this.portalLight = new THREE.PointLight(GOLD, 40, 30, 2);
+    this.portalLight = new THREE.PointLight(LEAF, 40, 30, 2);
     this.portalLight.position.set(16, 2.6, -44);
     this.group.add(this.portalLight);
   }
@@ -74,7 +74,7 @@ export class World {
       opacity: 0.85,
       depthWrite: false,
       blending: THREE.AdditiveBlending,
-      color: GOLD
+      color: LEAF
     });
 
     this.particles = new THREE.Points(geometry, material);
@@ -93,15 +93,15 @@ export class World {
     ];
 
     const wireMat = new THREE.MeshBasicMaterial({
-      color: GOLD,
+      color: LEAF,
       wireframe: true,
       transparent: true,
       opacity: 0.5
     });
 
     const coreMat = new THREE.MeshStandardMaterial({
-      color: GREEN,
-      emissive: GREEN,
+      color: DEEP,
+      emissive: DEEP,
       emissiveIntensity: 0.35,
       roughness: 0.3,
       metalness: 0.6,
@@ -131,8 +131,8 @@ export class World {
     this.portal.position.set(16, 2.6, -44);
 
     const ringMat = new THREE.MeshStandardMaterial({
-      color: GOLD,
-      emissive: GOLD,
+      color: LEAF,
+      emissive: LEAF,
       emissiveIntensity: 1.6,
       roughness: 0.25,
       metalness: 0.85
@@ -145,7 +145,7 @@ export class World {
     const halo = new THREE.Mesh(
       new THREE.CircleGeometry(2.5, 64),
       new THREE.MeshBasicMaterial({
-        color: GOLD,
+        color: LEAF,
         transparent: true,
         opacity: 0.08,
         side: THREE.DoubleSide,

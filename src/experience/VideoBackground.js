@@ -1,23 +1,32 @@
 import * as THREE from 'three';
 
 /**
- * Arrière-plan vidéo de la scène Three.js.
- * La vidéo est projetée en VideoTexture sur `scene.background`,
- * avec un cadrage "cover" (recalculé au resize) pour couvrir
- * l'écran sans déformation quel que soit le ratio.
+ * Arrière-plan vidéo de la scène Three.js, piloté par le scroll.
+ *
+ * La vidéo est projetée en VideoTexture sur `scene.background` avec un
+ * cadrage "cover" (recalculé au resize). Elle ne joue jamais toute seule :
+ * sa tête de lecture est asservie à la progression du scroll via
+ * `scrub(t)` → `video.currentTime = t * durée`.
+ *
+ * Pour un scrubbing parfaitement fluide dans les deux sens :
+ *  - le fichier est encodé avec une image-clé toutes les 6 frames ;
+ *  - la source compatible est choisie via canPlayType puis téléchargée
+ *    en Blob : toutes les données sont en mémoire, chaque seek est
+ *    instantané (aucune dépendance aux requêtes réseau partielles).
  */
 export class VideoBackground {
-  constructor(scene, url) {
+  /**
+   * @param {THREE.Scene} scene
+   * @param {{src: string, type: string}[]} sources  Ordre = priorité
+   */
+  constructor(scene, sources) {
     this.scene = scene;
+    this.duration = 0;
 
     this.video = document.createElement('video');
-    this.video.src = url;
     this.video.muted = true;
-    this.video.loop = true;
-    this.video.autoplay = true;
     this.video.playsInline = true;
     this.video.setAttribute('playsinline', '');
-    this.video.crossOrigin = 'anonymous';
     this.video.preload = 'auto';
 
     this.texture = new THREE.VideoTexture(this.video);
@@ -28,22 +37,55 @@ export class VideoBackground {
 
     this.scene.background = this.texture;
 
-    this.video.addEventListener('loadedmetadata', () => this.updateCoverFit());
+    this.video.addEventListener('loadedmetadata', () => {
+      this.duration = this.video.duration || 0;
+      this.updateCoverFit();
+    });
 
-    // L'autoplay muet est normalement autorisé ; on couvre le cas
-    // où le navigateur exige malgré tout un geste utilisateur.
-    const tryPlay = () => {
-      this.video.play().catch(() => {
-        const resume = () => {
-          this.video.play().catch(() => {});
-          window.removeEventListener('pointerdown', resume);
-          window.removeEventListener('keydown', resume);
-        };
-        window.addEventListener('pointerdown', resume);
-        window.addEventListener('keydown', resume);
-      });
-    };
-    tryPlay();
+    this._load(sources);
+  }
+
+  /** Choisit la première source décodable puis la charge en Blob. */
+  async _load(sources) {
+    let chosen = sources[0];
+    for (const s of sources) {
+      if (this.video.canPlayType(s.type)) {
+        chosen = s;
+        break;
+      }
+    }
+
+    try {
+      const response = await fetch(chosen.src);
+      const blob = await response.blob();
+      this.video.src = URL.createObjectURL(blob);
+    } catch {
+      // Réseau indisponible pour le fetch : lecture directe en flux.
+      this.video.src = chosen.src;
+    }
+
+    this.video.load();
+    this.video.pause();
+  }
+
+  /**
+   * Asservit la tête de lecture à la progression du scroll (lissée).
+   * Appelé à chaque frame de rendu.
+   * @param {number} t Progression dans [0, 1]
+   */
+  scrub(t) {
+    if (!this.duration) return;
+
+    // On s'arrête un peu avant la fin pour éviter l'état "ended".
+    const target = Math.min(Math.max(t, 0), 1) * Math.max(this.duration - 0.08, 0);
+
+    // Un seul seek à la fois ; le RAF suivant rattrape la cible.
+    if (this.video.seeking) return;
+
+    // Seuil d'une frame (24 fps) : évite les seeks redondants.
+    if (Math.abs(this.video.currentTime - target) > 1 / 24) {
+      this.video.currentTime = target;
+    }
   }
 
   /** Recadre la texture façon `object-fit: cover`. */
@@ -73,7 +115,7 @@ export class VideoBackground {
   }
 
   /** Promesse résolue dès que la vidéo peut être affichée. */
-  ready(timeoutMs = 5000) {
+  ready(timeoutMs = 8000) {
     return new Promise((resolve) => {
       if (this.video.readyState >= 2) return resolve();
       const done = () => resolve();
