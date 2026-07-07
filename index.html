@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Africa Agro Partners — Votre partenaire stratégique pour la valorisation et le négoce agricole en Côte d'Ivoire. Filiale du groupe Archetyp Africa." />
+  <meta name="theme-color" content="#06251b" />
+  <title>Africa Agro Partners — Bâtir aujourd'hui, semer l'avenir</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌾</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ==================== SCÈNE WEBGL ==================== -->
+  <canvas id="webgl" aria-hidden="true"></canvas>
+  <div class="scene-veil" aria-hidden="true"></div>
+
+  <!-- ==================== ÉCRAN DE CHARGEMENT ==================== -->
+  <div id="loader" class="loader">
+    <div class="loader__mark">A<span>A</span>P</div>
+    <div class="loader__bar"><span></span></div>
+    <p class="loader__hint">Semer l'avenir…</p>
+  </div>
+
+  <!-- ==================== BARRE DE PROGRESSION ==================== -->
+  <div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
+
+  <!-- ==================== HEADER ==================== -->
+  <header class="header">
+    <a class="header__brand" href="#hero" aria-label="Africa Agro Partners — retour à l'accueil">
+      <span class="header__logo">A<em>A</em>P</span>
+      <span class="header__name">
+        <strong>AFRICA AGRO PARTNERS<sup>®</sup></strong>
+        <small>Filiale du groupe ARCHETYP AFRICA<sup>®</sup></small>
+      </span>
+    </a>
+    <nav class="header__nav" aria-label="Navigation principale">
+      <a href="#apropos">Qui sommes-nous</a>
+      <a href="#expertise">Filières</a>
+      <a href="#services">Services</a>
+      <a href="#bmpa">BMPA-CI</a>
+      <a href="#contact" class="header__cta">Contact</a>
+    </nav>
+  </header>
+
+  <!-- ==================== BOUTON VERROUILLÉ EN 3D ==================== -->
+  <div id="bmpa-anchor" class="bmpa-anchor" style="display:none">
+    <a href="#bmpa" id="bmpa-button" class="bmpa-button">
+      <span class="bmpa-button__pulse" aria-hidden="true"></span>
+      Accéder à la BMPA-CI
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M5 12h14M13 6l6 6-6 6" />
+      </svg>
+    </a>
+  </div>
+
+  <!-- ==================== CONTENU SUPERPOSÉ ==================== -->
+  <main id="content">
+
+    <!-- SECTION 1 · HERO -->
+    <section id="hero" class="section section--hero" data-section>
+      <div class="section__inner">
+        <p class="hero__kicker reveal" style="--d:0">Filiale du groupe ARCHETYP AFRICA<sup>®</sup> · Côte d'Ivoire</p>
+        <h1 class="hero__title" id="hero-title">Bâtir aujourd'hui, semer l'avenir, récolter la valeur de demain.</h1>
+        <p class="hero__lead reveal" style="--d:2">
+          <strong>AFRICA AGRO PARTNERS<sup>®</sup></strong> est votre partenaire stratégique pour la
+          valorisation et le négoce agricole en Côte d'Ivoire. Bien plus qu'une entreprise de négoce,
+          nous sommes un <em>intégrateur de solutions agricoles</em>, spécialisé dans la valorisation
+          des matières premières.
+        </p>
+        <div class="hero__actions reveal" style="--d:3">
+          <a class="btn btn--gold" href="#apropos">Découvrir l'expérience</a>
+          <a class="btn btn--ghost" href="#bmpa">La bourse BMPA-CI</a>
+        </div>
+      </div>
+      <div class="scroll-cue reveal" style="--d:4" aria-hidden="true">
+        <span class="scroll-cue__mouse"><span></span></span>
+        <span class="scroll-cue__label">Faites défiler pour explorer</span>
+      </div>
+    </section>
+
+    <!-- SECTION 2 · QUI SOMMES-NOUS -->
+    <section id="apropos" class="section" data-section>
+      <div class="section__inner">
+        <p class="section__kicker reveal" style="--d:0">La genèse — d'où venons-nous ?</p>
+        <h2 class="section__title reveal" style="--d:1">Construire l'Afrique de demain, <span class="u-gold">aujourd'hui</span>.</h2>
+        <div class="grid grid--2">
+          <article class="glass reveal" style="--d:2">
+            <h3>Un ancrage panafricain</h3>
+            <p>
+              AFRICA AGRO PARTNERS<sup>®</sup> est une filiale du groupe <strong>ARCHETYP AFRICA<sup>®</sup></strong>,
+              plateforme panafricaine de développement et d'investissement, créée avec l'ambition de contribuer
+              au développement <strong>structuré, durable et souverain</strong> des économies africaines —
+              en combinant développement de projets, structuration financière et création d'actifs stratégiques
+              à long terme.
+            </p>
+          </article>
+          <article class="glass reveal" style="--d:3">
+            <h3>Notre mission</h3>
+            <p>
+              Créer des ponts <strong>fiables et transparents</strong> entre les producteurs et les acheteurs,
+              en garantissant la <strong>qualité</strong>, la <strong>traçabilité</strong> et
+              l'<strong>efficacité</strong> à chaque étape de la transaction.
+            </p>
+          </article>
+        </div>
+        <ul class="chips reveal" style="--d:4" aria-label="Nos valeurs">
+          <li>Vision long terme</li>
+          <li>Gouvernance rigoureuse</li>
+          <li>Impact durable</li>
+          <li>Création de valeur partagée</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SECTION 3 · EXPERTISE / FILIÈRES -->
+    <section id="expertise" class="section" data-section>
+      <div class="section__inner">
+        <p class="section__kicker reveal" style="--d:0">Nos domaines d'expertise</p>
+        <h2 class="section__title reveal" style="--d:1">Trois filières <span class="u-gold">stratégiques</span></h2>
+        <p class="section__lead reveal" style="--d:2">
+          Notre activité se concentre sur trois filières choisies pour leur fort potentiel
+          de croissance et leur importance économique.
+        </p>
+        <div class="grid grid--3">
+          <article class="card glass reveal" style="--d:3">
+            <div class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <path d="M24 44V16" /><path d="M24 20c-6 0-10-4-10-10 6 0 10 4 10 10Z" />
+                <path d="M24 20c6 0 10-4 10-10-6 0-10 4-10 10Z" />
+                <path d="M24 30c-6 0-11-4-11-11 7 0 11 5 11 11Z" />
+                <path d="M24 30c6 0 11-4 11-11-7 0-11 5-11 11Z" />
+              </svg>
+            </div>
+            <h3>Maïs</h3>
+            <p>Une céréale essentielle pour l'industrie agroalimentaire régionale — volumes stables et débouchés industriels.</p>
+          </article>
+          <article class="card glass reveal" style="--d:4">
+            <div class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <path d="M14 20c0-7 5-12 11-12s11 5 11 12-5 20-11 20-11-13-11-20Z" />
+                <path d="M25 8c0 6-4 10-9 10" />
+              </svg>
+            </div>
+            <h3>Noix de Cajou</h3>
+            <p>Le joyau de l'exportation ivoirienne, dont nous maîtrisons les standards de qualité les plus exigeants.</p>
+          </article>
+          <article class="card glass reveal" style="--d:5">
+            <div class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <circle cx="24" cy="24" r="14" /><path d="M24 10v28M12 17l24 14M36 17 12 31" />
+              </svg>
+            </div>
+            <h3>Cola</h3>
+            <p>Un produit de niche à forte valeur culturelle et commerciale, ancré dans les échanges régionaux.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4 · CHAÎNE DE VALEUR -->
+    <section id="chaine" class="section" data-section>
+      <div class="section__inner">
+        <p class="section__kicker reveal" style="--d:0">Ce qui nous différencie</p>
+        <h2 class="section__title reveal" style="--d:1">Une chaîne de valeur <span class="u-gold">intégrée</span></h2>
+        <p class="section__lead reveal" style="--d:2">
+          Une suite de services complète qui sécurise l'ensemble de la transaction pour nos partenaires.
+        </p>
+        <ol class="steps">
+          <li class="glass reveal" style="--d:3">
+            <span class="steps__num">01</span>
+            <h3>Collecte &amp; Intermédiation</h3>
+            <p>Nous sourçons directement auprès des producteurs, assurant des volumes stables et une juste rémunération.</p>
+          </li>
+          <li class="glass reveal" style="--d:4">
+            <span class="steps__num">02</span>
+            <h3>Garantie Qualité &amp; Traçabilité</h3>
+            <p>Nos processus rigoureux assurent que chaque lot répond aux cahiers des charges les plus stricts.</p>
+          </li>
+          <li class="glass reveal" style="--d:5">
+            <span class="steps__num">03</span>
+            <h3>Logistique &amp; Acheminement</h3>
+            <p>Nous prenons en charge la complexité du transport pour garantir des livraisons ponctuelles et sécurisées.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- SECTION 5 · SERVICES -->
+    <section id="services" class="section" data-section>
+      <div class="section__inner">
+        <p class="section__kicker reveal" style="--d:0">Nos services</p>
+        <h2 class="section__title reveal" style="--d:1">Marché agricole <span class="u-gold">&amp;</span> hors-marché</h2>
+        <div class="grid grid--3">
+          <article class="glass service reveal" style="--d:2">
+            <h3>Intermédiation en opérations de bourse agricole</h3>
+            <p>Nous facilitons la connexion entre les agriculteurs, les transformateurs et les exportateurs sur la BMPA-CI.</p>
+          </article>
+          <article class="glass service reveal" style="--d:3">
+            <h3>Gestion de portefeuille agricole</h3>
+            <p>Optimiser la performance du portefeuille du client sans qu'il ait à gérer lui-même arbitrages, analyses et surveillance des marchés.</p>
+          </article>
+          <article class="glass service reveal" style="--d:4">
+            <h3>Émission &amp; négociation de titres agricoles</h3>
+            <p>Accompagnement complet : émission du Récépissé d'Entreposage (RE), mise en cote du titre et négociation sur le marché.</p>
+          </article>
+          <article class="glass service reveal" style="--d:5">
+            <h3>Gestion des risques</h3>
+            <p>Solutions de couverture contre la volatilité des prix et sécurisation transactionnelle de bout en bout.</p>
+          </article>
+          <article class="glass service reveal" style="--d:6">
+            <h3>Recherche &amp; analyse de marché</h3>
+            <p>Données de marché en temps réel, appuyées par une analyse prédictive des prix et des tendances.</p>
+          </article>
+          <article class="glass service service--accent reveal" style="--d:7">
+            <h3>Hors-marché : financement &amp; information</h3>
+            <p>Assistance à l'obtention de financements adaptés, suivi de la solvabilité des partenaires et réduction des risques d'impayés.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6 · BMPA-CI -->
+    <section id="bmpa" class="section section--bmpa" data-section>
+      <div class="section__inner">
+        <p class="section__kicker reveal" style="--d:0">Intermédiation boursière</p>
+        <h2 class="section__title reveal" style="--d:1">La <span class="u-gold">BMPA-CI</span>, le marché agricole structuré</h2>
+        <div class="grid grid--2">
+          <article class="glass reveal" style="--d:2">
+            <h3>Un marché financier régulé</h3>
+            <p>
+              La <strong>Bourse des Matières Premières Agricoles de Côte d'Ivoire (BMPA-CI)</strong> est un marché
+              financier structuré, ouvert aux producteurs agricoles, commerçants et investisseurs, où s'échangent
+              maïs, noix de cajou brute et noix de cola fraîche. Sa gestion est assurée par la
+              <strong>BRVM</strong> durant la phase pilote.
+            </p>
+          </article>
+          <article class="glass reveal" style="--d:3">
+            <h3>Des contrats adossés à des RE certifiés</h3>
+            <p>
+              Les produits s'échangent sous forme de <strong>contrats adossés à des Récépissés d'Entreposage (RE)</strong>,
+              émis par des entrepôts certifiés par l'<strong>ARRE</strong>. Chaque récépissé garantit une marchandise
+              correctement stockée, inspectée et immédiatement mobilisable pour livraison.
+            </p>
+          </article>
+        </div>
+        <div class="grid grid--2">
+          <article class="glass bmpa-list reveal" style="--d:4">
+            <h3>Pour les agriculteurs &amp; coopératives</h3>
+            <ul>
+              <li>Accès transparent aux prix internationaux</li>
+              <li>Ouverture à l'export et nouveaux débouchés</li>
+              <li>Paiements sécurisés sous 48&nbsp;h via la BNI et la BMPA</li>
+              <li>Crédit de campagne grâce aux récépissés d'entreposage</li>
+              <li>Qualité garantie dès le bord-champ en entrepôts agréés</li>
+            </ul>
+          </article>
+          <article class="glass bmpa-list reveal" style="--d:5">
+            <h3>Pour les acheteurs</h3>
+            <ul>
+              <li>Sourcing fiable, constant et prévisible</li>
+              <li>Qualité contrôlée, auditée et certifiée</li>
+              <li>Prix optimisés par la transparence du système</li>
+              <li>Exécution garantie des livraisons (T+2)</li>
+              <li>Traçabilité complète de l'origine des produits</li>
+            </ul>
+          </article>
+        </div>
+        <p class="bmpa-hint reveal" style="--d:6">
+          <span class="bmpa-hint__icon" aria-hidden="true">◈</span>
+          <span>Le portail doré dans la scène vous suit : le bouton <em>« Accéder à la BMPA-CI »</em> est
+          verrouillé sur ses coordonnées 3D en temps réel.</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- SECTION 7 · CONTACT -->
+    <section id="contact" class="section section--contact" data-section>
+      <div class="section__inner">
+        <p class="section__kicker reveal" style="--d:0">Merci</p>
+        <h2 class="section__title reveal" style="--d:1">Ensemble, construisons la prochaine étape de votre <span class="u-gold">croissance</span>.</h2>
+        <div class="contact glass reveal" style="--d:2">
+          <div>
+            <h3>AFRICA AGRO PARTNERS<sup>®</sup></h3>
+            <p>08 BPM 1600 Abidjan 08 — Côte d'Ivoire</p>
+            <p><a href="tel:+2252721342735">(+225) 27 21 34 27 35</a></p>
+          </div>
+          <a class="btn btn--gold" href="tel:+2252721342735">Parler à un expert</a>
+        </div>
+        <footer class="footer reveal" style="--d:3">
+          <p>© 2025 AFRICA AGRO PARTNERS<sup>®</sup> — Filiale du groupe ARCHETYP AFRICA<sup>®</sup>. Tous droits réservés.</p>
+        </footer>
+      </div>
+    </section>
+
+  </main>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
